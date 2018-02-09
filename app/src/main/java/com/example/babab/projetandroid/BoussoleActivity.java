@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 /**
  * Created by babab on 09/02/2018.
+ * modified by joelcostamagna on 09/02/2018.
  */
 
 public class BoussoleActivity extends Activity {
