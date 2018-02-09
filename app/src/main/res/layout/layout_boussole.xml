@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Boussole"
+        android:text="pas une boussole"
         android:textSize="80dp" />
 
 </RelativeLayout>
