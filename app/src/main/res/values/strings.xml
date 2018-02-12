@@ -1,3 +1,27 @@
 <resources>
+    <!--
+        PARTIE PRINCIPALE DU PROJET
+    -->
     <string name="app_name">ProjetAndroid</string>
+
+    <!--
+        MENU (PAGE PRINCIPALE)
+    -->
+    <string name="menu_button_boussole">Boussole</string>
+    <string name="menu_button_carte">Carte</string>
+    <string name="menu_button_meteo">Meteo</string>
+
+    <!--
+        BOUSSOLE
+    -->
+    <string name="titre_page_boussole">Boussole</string>
+    <!--
+        CARTE
+    -->
+    <string name="titre_page_carte">Carte</string>
+
+    <!--
+        METEO
+    -->
+    <string name="titre_page_meteo">Meteo</string>
 </resources>

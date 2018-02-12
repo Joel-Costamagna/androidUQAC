@@ -17,4 +17,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, BoussoleActivity.class);
         startActivity(intent);
     }
+
+    public void onClickButtonMeteo(View view){
+        Intent intent = new Intent(MainActivity.this, MeteoActivity.class);
+        startActivity(intent);
+    }
+    public void onClickButtonCarte(View view){
+        Intent intent = new Intent(MainActivity.this, CarteActivity.class);
+        startActivity(intent);
+    }
+
 }

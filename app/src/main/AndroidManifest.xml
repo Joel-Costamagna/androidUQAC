@@ -19,6 +19,12 @@
         <activity android:name=".BoussoleActivity">
 
         </activity>
+        <activity android:name=".CarteActivity">
+
+        </activity>
+        <activity android:name=".MeteoActivity">
+
+        </activity>
     </application>
 
 </manifest>

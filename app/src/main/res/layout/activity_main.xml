@@ -9,7 +9,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Boussole"
+        android:text="@string/menu_button_boussole"
         android:id="@+id/boussole"
         android:onClick="onClickButtonBoussole"/>
 
@@ -19,15 +19,18 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/boussole"
-        android:text="Carte"
-        android:id="@+id/carte"/>
+        android:text="@string/menu_button_carte"
+        android:id="@+id/carte"
+        android:onClick="onClickButtonCarte"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:id="@+id/meteo"
         android:layout_below="@+id/carte"
-        android:text="meteo" />
+        android:text="@string/menu_button_meteo"
+        android:onClick="onClickButtonMeteo" />
 
 </RelativeLayout>
