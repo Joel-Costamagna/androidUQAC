@@ -1,7 +1,10 @@
 package com.example.projet.projetandroid.boussole;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
 import com.example.projet.projetandroid.R;
@@ -19,6 +22,13 @@ public class BoussoleActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_boussole);
 
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+
+        }
+
+
         compass = new Boussole(this);
         compass.dialView = findViewById(R.id.main_image_dial);
         compass.textview_azimuth = findViewById(R.id.azimuth);
@@ -26,7 +36,7 @@ public class BoussoleActivity extends Activity {
         gps = new MyGPSLocation(this);
         gps.longitude = findViewById(R.id.longitude);
         gps.latitude = findViewById(R.id.latitude);
-        gps.altitude = findViewById(R.id.altitude);
+        //gps.altitude = findViewById(R.id.altitude);
     }
 
     @Override

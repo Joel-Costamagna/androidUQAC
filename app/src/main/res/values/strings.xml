@@ -10,23 +10,27 @@
     <string name="menu_button_boussole">Boussole</string>
     <string name="menu_button_carte">Carte</string>
     <string name="menu_button_meteo">Meteo</string>
+    <string name="titre_page_meteo">Meteo</string>
+
 
     <!--
         BOUSSOLE
     -->
     <string name="titre_page_boussole">Boussole</string>
+    <string name="cadran">cadran</string>
+    <string name="aiguille">aiguille</string>
+    <string name="placeholder">activez la localisation</string>
     <!--
         CARTE
     -->
     <string name="titre_page_carte">Carte</string>
+    <string name="carte">carte</string>
 
     <!--
         METEO
     -->
-    <string name="titre_page_meteo">Meteo</string>
-    <string name="cadran">cadran</string>
-    <string name="aiguille">aiguille</string>
-    <string name="carte">carte</string>
     <string name="meteo">meteo</string>
-    <string name="placeholder">0</string>
+    <string name="altitude">TODO</string>
+
+
 </resources>
