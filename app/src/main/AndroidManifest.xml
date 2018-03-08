@@ -29,6 +29,8 @@
         <activity android:name=".MeteoActivity">
 
         </activity>
+        <activity android:name=".Boussole.BoussoleActivity" />
+        <activity android:name=".Meteo.MeteoActivity" />
     </application>
 
 </manifest>

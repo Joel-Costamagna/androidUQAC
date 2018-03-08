@@ -24,4 +24,7 @@
         METEO
     -->
     <string name="titre_page_meteo">Meteo</string>
+    <string name="cadran">cadran</string>
+    <string name="aiguille">aiguille</string>
+    <string name="azimuth_placeholder">0°</string>
 </resources>

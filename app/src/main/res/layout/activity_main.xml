@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.babab.projetandroid.MainActivity">
+    tools:context="com.example.projet.projetandroid.MainActivity">
 
     <Button
+        android:id="@+id/boussole"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/menu_button_boussole"
-        android:id="@+id/boussole"
-        android:onClick="onClickButtonBoussole"/>
+        android:onClick="onClickButtonBoussole"
+        android:text="@string/menu_button_boussole" />
 
     <Button
+        android:id="@+id/carte"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/boussole"
-        android:text="@string/menu_button_carte"
-        android:id="@+id/carte"
-        android:onClick="onClickButtonCarte"/>
+        android:onClick="onClickButtonCarte"
+        android:text="@string/menu_button_carte" />
 
     <Button
+        android:id="@+id/meteo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/meteo"
         android:layout_below="@+id/carte"
-        android:text="@string/menu_button_meteo"
-        android:onClick="onClickButtonMeteo" />
+        android:onClick="onClickButtonMeteo"
+        android:text="@string/menu_button_meteo" />
 
 </RelativeLayout>
