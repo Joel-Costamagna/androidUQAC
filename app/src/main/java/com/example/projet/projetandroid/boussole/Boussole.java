@@ -114,7 +114,18 @@ class Boussole implements SensorEventListener {
     private void adjustArrow() {
         //TODO pourquoi la je dois inverser l'angle ?
         final int    azimuth_degree = Math.round(azimuth);
-        final String azimuth_str    = String.format(Locale.CANADA_FRENCH, "%d°", azimuth_degree);
+
+        String az_orientation;
+        if (azimuth_degree < 45) az_orientation = "N";
+        else if (azimuth_degree < 90) az_orientation = "NE";
+        else if (azimuth_degree < 135) az_orientation = "E";
+        else if (azimuth_degree < 180) az_orientation = "SE";
+        else if (azimuth_degree < 225) az_orientation = "S";
+        else if (azimuth_degree < 270) az_orientation = "SW";
+        else if (azimuth_degree < 315) az_orientation = "W";
+        else az_orientation = "NW";
+
+        final String azimuth_str = String.format(Locale.CANADA_FRENCH, "%d° %s", azimuth_degree, az_orientation);
         textview_azimuth.setText(azimuth_str);
         if (dialView == null) {
             Log.i(TAG, "arrow view is not set");
