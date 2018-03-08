@@ -10,61 +10,77 @@ import android.util.Log;
 import android.widget.TextView;
 
 
-/**
- * get the GPS location and show it on the Boussole screen.
- */
+/** get the GPS location and show it on the Boussole screen. */
 class MyGPSLocation implements LocationListener {
 
+    /** pour les log */
     private static final String TAG = "gpsLocation";
-    private final LocationManager locationManager;
-    TextView latitude  = null;
-    TextView longitude = null;
-    TextView altitude  = null;
-    private String mprovider;
 
-    MyGPSLocation(Context context) {
+    /** gère le GPS. */
+    private final LocationManager locationManager;
+    private final String          mprovider;
+    /** view qui affiche la latitude sous la boussole. */
+    TextView latitude;
+    /** view qui affiche la longitude sous la boussole. */
+    TextView longitude;
+    /** view qui affiche l'altitude sous la boussole. */
+    TextView altitude;
+
+    /**
+     * constructeur
+     *
+     * @param context l'activité concernée.
+     */
+    MyGPSLocation(final Context context) {
 
 
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        Criteria criteria = new Criteria();
+        final Criteria criteria = new Criteria();
         criteria.setAltitudeRequired(true);
 
         assert locationManager != null;
         mprovider = locationManager.getBestProvider(criteria, false);
-
-
     }
 
-    @Override public void onLocationChanged(android.location.Location location) {
-        Log.i(TAG, "onLocationChanged: " + location.toString());
+    /**
+     * met à  jour la localisation.
+     *
+     * @param location la nouvelle localisation à afficher
+     */
+    @Override public void onLocationChanged(final Location location) {
+        Log.i(TAG, "onLocationChanged: " + location);
         longitude.setText(String.format("Long. : %s", location.getLongitude()));
         latitude.setText(String.format("Lat. : %s", location.getLatitude()));
         altitude.setText(String.format("Alt. : %s", location.getAltitude()));
 
-
     }
 
-    void start() throws SecurityException {
-        Log.i(TAG, "start gps");
-        if (mprovider != null && !mprovider.isEmpty()) {
+    /** démarre le tracking GPS */
+    void start() {
+        try {
+            Log.i(TAG, "start gps");
+            if ((mprovider == null) || mprovider.isEmpty()) return;
 
-            Location location = locationManager.getLastKnownLocation(mprovider);
             locationManager.requestLocationUpdates(mprovider, 15000, 1, this);
-            if (location != null) {
-                onLocationChanged(location);
-            }
-        }
+            final Location location = locationManager.getLastKnownLocation(mprovider);
+            assert location != null;
+            onLocationChanged(location);
 
+
+        } catch (final SecurityException e) {
+            Log.e(TAG, "start: " + e.getLocalizedMessage());
+        }
     }
 
+    /** arrete le tracking GPS. */
     void stop() {
         locationManager.removeUpdates(this);
     }
 
 
-    @Override public void onStatusChanged(String provider, int status, Bundle extras) {}
+    @Override public void onStatusChanged(final String provider, final int status, final Bundle extras) {}
 
-    @Override public void onProviderEnabled(String provider)                          {}
+    @Override public void onProviderEnabled(final String provider)                                      {}
 
-    @Override public void onProviderDisabled(String provider)                         {}
+    @Override public void onProviderDisabled(final String provider)                                     {}
 }
