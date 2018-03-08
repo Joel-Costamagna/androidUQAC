@@ -1,4 +1,4 @@
-package com.example.projet.projetandroid.Meteo;
+package com.example.projet.projetandroid.meteo;
 
 import android.app.Activity;
 import android.os.Bundle;

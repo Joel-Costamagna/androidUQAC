@@ -8,8 +8,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="meteo"
-        android:textSize="80dp" />
+        android:text="@string/meteo"
+        android:textSize="80sp" />
 
 
 </RelativeLayout>

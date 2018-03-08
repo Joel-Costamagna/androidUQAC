@@ -1,4 +1,4 @@
-package com.example.projet.projetandroid.Boussole;
+package com.example.projet.projetandroid.boussole;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -16,26 +16,28 @@ import android.widget.TextView;
 import java.util.Locale;
 
 
-public class Boussole implements SensorEventListener {
-    private static final String TAG = "Boussole";
+class Boussole implements SensorEventListener {
+    private static final String TAG = "boussole";
+    private final SensorManager sensorManager;
+    private final Sensor        gsensor;
+    private final Sensor        msensor;
+    private final Sensor        test_sensor;
+    private final float[] mGravity     = new float[3];
+    private final float[] mGeomagnetic = new float[3];
     //initialisés dans BoussoleActivity
     ImageView arrowView        = null;
     TextView  textview_azimuth = null;
-    private SensorManager sensorManager;
-    private Sensor        gsensor;
-    private Sensor        msensor;
-    private Sensor        test_sensor;
-    private float[] mGravity       = new float[3];
-    private float[] mGeomagnetic   = new float[3];
-    private float   azimuth        = 0f;
-    private float   currentAzimuth = 0;
+    private float azimuth        = 0f;
+    private float currentAzimuth = 0;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     Boussole(Context context) {
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+        assert sensorManager != null;
         gsensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         test_sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR);
         msensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+
 
     }
 
@@ -56,7 +58,9 @@ public class Boussole implements SensorEventListener {
     }
 
     private void adjustArrow() {
-        textview_azimuth.setText(String.format(Locale.CANADA_FRENCH, "%d°", Math.round(360 - azimuth))); //TODO pourquoi on doit soustraire 360 à l'affichage?
+        //TODO pourquoi la je dois inverser l'angle ?
+        String azimuth_str = String.format(Locale.CANADA_FRENCH, "%d°", Math.round(azimuth));
+        textview_azimuth.setText(azimuth_str);
         if (arrowView == null) {
             Log.i(TAG, "arrow view is not set");
             return;

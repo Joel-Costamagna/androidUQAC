@@ -1,4 +1,4 @@
-package com.example.projet.projetandroid.Carte;
+package com.example.projet.projetandroid.carte;
 
 import android.app.Activity;
 import android.os.Bundle;
