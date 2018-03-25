@@ -32,9 +32,6 @@ public class Coord {
 
     @Override
     public String toString() {
-        return "Coord{" +
-                "latitude=" + latitude +
-                ", longitude=" + longitude +
-                '}';
+        return "Coord{" + "latitude=" + latitude + ", longitude=" + longitude + '}';
     }
 }

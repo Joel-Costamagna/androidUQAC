@@ -33,7 +33,7 @@ class Boussole implements SensorEventListener {
      */
     private final SensorManager sensorManager;
     /**
-     * geogrpahic north (acceléromètre)
+     * geographic north (acceléromètre)
      */
     private final Sensor        gsensor;
     /**
@@ -77,7 +77,8 @@ class Boussole implements SensorEventListener {
      *
      * @param context l'activité qui appele
      */
-    @RequiresApi(api = VERSION_CODES.KITKAT) Boussole(final Context context) {
+    @RequiresApi(api = VERSION_CODES.KITKAT)
+    Boussole(final Context context) {
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         assert sensorManager != null;
         gsensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -113,17 +114,22 @@ class Boussole implements SensorEventListener {
      */
     private void adjustArrow() {
         //TODO pourquoi la je dois inverser l'angle ?
-        final int    azimuth_degree = Math.round(azimuth);
+        final int azimuth_degree = Math.round(azimuth);
 
         String az_orientation;
-        if (azimuth_degree < 45) az_orientation = "N";
-        else if (azimuth_degree < 90) az_orientation = "NE";
-        else if (azimuth_degree < 135) az_orientation = "E";
-        else if (azimuth_degree < 180) az_orientation = "SE";
-        else if (azimuth_degree < 225) az_orientation = "S";
-        else if (azimuth_degree < 270) az_orientation = "SW";
-        else if (azimuth_degree < 315) az_orientation = "W";
-        else az_orientation = "NW";
+        if (azimuth_degree < 45) { az_orientation = "N"; } else if (azimuth_degree < 90) {
+            az_orientation = "NE";
+        } else if (azimuth_degree < 135) {
+            az_orientation = "E";
+        } else if (azimuth_degree < 180) {
+            az_orientation = "SE";
+        } else if (azimuth_degree < 225) {
+            az_orientation = "S";
+        } else if (azimuth_degree < 270) {
+            az_orientation = "SW";
+        } else if (azimuth_degree < 315) {
+            az_orientation = "W";
+        } else { az_orientation = "NW"; }
 
         final String azimuth_str = String.format(Locale.CANADA_FRENCH, "%d° %s", azimuth_degree, az_orientation);
         textview_azimuth.setText(azimuth_str);
@@ -152,7 +158,8 @@ class Boussole implements SensorEventListener {
         dialView.startAnimation(an); //on fait bouger le cadran
     }
 
-    @Override public void onSensorChanged(final SensorEvent event) {
+    @Override
+    public void onSensorChanged(final SensorEvent event) {
         final float[] orientation = new float[3];
         if (event.sensor.getType() == Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR) {
 
@@ -196,5 +203,6 @@ class Boussole implements SensorEventListener {
         adjustArrow();
     }
 
-    @Override public void onAccuracyChanged(final Sensor sensor, final int accuracy) {/*do nothing */ }
+    @Override
+    public void onAccuracyChanged(final Sensor sensor, final int accuracy) {/*do nothing */ }
 }

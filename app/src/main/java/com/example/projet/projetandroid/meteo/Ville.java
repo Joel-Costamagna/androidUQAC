@@ -8,13 +8,13 @@ public class Ville {
 
     private String name;
     private String country;
-    private Coord coord ;
+    private Coord  coord;
 
-    public Ville(String name){
+    public Ville(String name) {
         this.name = name;
     }
 
-    public Ville( String name, String country, Coord coord) {
+    public Ville(String name, String country, Coord coord) {
         this.name = name;
         this.country = country;
         this.coord = coord;
@@ -46,10 +46,6 @@ public class Ville {
 
     @Override
     public String toString() {
-        return "City{" +
-                ", name='" + name + '\'' +
-                ", country='" + country + '\'' +
-                ", coord=" + coord +
-                '}';
+        return "City{" + ", name='" + name + '\'' + ", country='" + country + '\'' + ", coord=" + coord + '}';
     }
 }

@@ -6,7 +6,9 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
+import android.widget.TextView;
 
+import com.example.projet.projetandroid.Helpers.MyGPSLocation;
 import com.example.projet.projetandroid.R;
 
 
@@ -18,11 +20,13 @@ public class BoussoleActivity extends Activity {
 
     private MyGPSLocation gps;
 
-    @Override protected void onCreate(final Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_boussole);
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this,
+                                               Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
 
@@ -33,9 +37,15 @@ public class BoussoleActivity extends Activity {
         compass.dialView = findViewById(R.id.main_image_dial);
         compass.textview_azimuth = findViewById(R.id.azimuth);
 
-        gps = new MyGPSLocation(this);
-        gps.longitude = findViewById(R.id.longitude);
-        gps.latitude = findViewById(R.id.latitude);
+        TextView latitudeView  = findViewById(R.id.latitude);
+        TextView longitudeView = findViewById(R.id.longitude);
+
+        gps = new MyGPSLocation(this, () -> {
+            longitudeView.setText(String.format("Long. : %s", MyGPSLocation.parseLongitude(gps.getLongitude())));
+            latitudeView.setText(String.format("Lat. : %s", MyGPSLocation.parseLatitude(gps.getLatitude())));
+        });
+
+
         //gps.altitude = findViewById(R.id.altitude);
     }
 
