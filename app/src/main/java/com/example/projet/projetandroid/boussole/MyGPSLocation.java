@@ -11,10 +11,12 @@ import android.widget.TextView;
 
 
 /** get the GPS location and show it on the Boussole screen. */
-class MyGPSLocation implements LocationListener {
+public class MyGPSLocation implements LocationListener {
 
     /** pour les log */
     private static final String TAG = "gpsLocation";
+    private double latitudeCarte;
+    private double longitudeCarte;
 
     /** gère le GPS. */
     private final LocationManager locationManager;
@@ -31,7 +33,7 @@ class MyGPSLocation implements LocationListener {
      *
      * @param context l'activité concernée.
      */
-    MyGPSLocation(final Context context) {
+    public MyGPSLocation(final Context context) {
 
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         final Criteria criteria = new Criteria();
@@ -84,6 +86,8 @@ class MyGPSLocation implements LocationListener {
     @Override public void onLocationChanged(final Location location) {
         Log.i(TAG, "onLocationChanged: " + location);
 
+        latitudeCarte =   location.getLatitude();
+        longitudeCarte  =   location.getLongitude();
 
         longitude.setText(String.format("Long. : %s", parseLongitude(location.getLongitude())));
         latitude.setText(String.format("Lat. : %s", parseLatitude(location.getLatitude())));
@@ -92,15 +96,19 @@ class MyGPSLocation implements LocationListener {
     }
 
     /** démarre le tracking GPS */
-    void start() {
+    public void start() {
         try {
             Log.i(TAG, "start gps");
             if ((mprovider == null) || mprovider.isEmpty()) {
                 mprovider = LocationManager.GPS_PROVIDER;
             }
-
             locationManager.requestLocationUpdates(mprovider, 15000, 1, this);
             final Location location = locationManager.getLastKnownLocation(mprovider);
+
+            //affectation lat et lg
+            latitudeCarte =   location.getLatitude();
+            longitudeCarte  =   location.getLongitude();
+
             if (location == null) {
                 Log.e(TAG, "start: location is null");
                 throw new AssertionError("location is null");
@@ -114,7 +122,7 @@ class MyGPSLocation implements LocationListener {
     }
 
     /** arrete le tracking GPS. */
-    void stop() {
+    public void stop() {
         locationManager.removeUpdates(this);
     }
 
@@ -124,4 +132,15 @@ class MyGPSLocation implements LocationListener {
     @Override public void onProviderEnabled(final String provider)                                      {}
 
     @Override public void onProviderDisabled(final String provider)                                     {}
+
+    // recuperer latitude et longitude pour la carte
+    public double getLatitudeCarte(){
+        start();
+        return this.latitudeCarte;
+    }
+
+    public double getLongitudeCarte(){
+        start();
+        return this.longitudeCarte;
+    }
 }

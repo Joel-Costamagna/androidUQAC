@@ -2,9 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.projet.projetandroid">
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.ACCESS_ASSISTED_GPS" />
+    <uses-permission android:name="android.permission.LOCATION" />
 
     <uses-feature android:name="android.hardware.location.gps" />
     <uses-feature android:name="android.hardware.SensorEventListener" />
@@ -12,6 +16,7 @@
     <uses-feature android:name="android.hardware.Sensor" />
 
     <application
+
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
@@ -26,12 +31,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".boussole.BoussoleActivity">
-
-        </activity>
+        <activity android:name=".boussole.BoussoleActivity">  </activity>
         <activity android:name=".carte.CarteActivity" />
 
         <activity android:name=".meteo.MeteoActivity" />
+
+        <service android:name=".carte.MaPosition"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <meta-data
+            android:name= "com.google.android.gms.version"
+            android:value = "@integer/google_play_services_version" />
+
     </application>
 
 </manifest>
