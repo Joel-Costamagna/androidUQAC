@@ -38,11 +38,14 @@
         android:layout_centerHorizontal="true"
         android:orientation="vertical">
 
+        <!--TODO parser l'altitude-->
+        <!--
         <TextView
             android:id="@+id/altitude"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/altitude" />
+        -->
 
         <TextView
             android:id="@+id/longitude"
