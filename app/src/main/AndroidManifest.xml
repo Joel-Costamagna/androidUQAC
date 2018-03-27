@@ -31,7 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".boussole.BoussoleActivity"/>
+        <activity android:name=".boussole.BoussoleActivity" />
         <activity android:name=".carte.CarteActivity" />
 
         <activity android:name=".meteo.MeteoActivity" />
