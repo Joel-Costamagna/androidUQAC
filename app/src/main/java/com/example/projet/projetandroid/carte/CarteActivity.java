@@ -13,10 +13,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-/**
- * This shows how to create a simple activity with a raw MapView and add a marker to it. This
- * requires forwarding all the important lifecycle methods onto MapView.
- */
+
 public class CarteActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private static final String TAG ="Carte" ;
