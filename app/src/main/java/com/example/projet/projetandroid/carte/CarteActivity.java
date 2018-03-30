@@ -8,18 +8,21 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.projet.projetandroid.R;
+
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 
 public class CarteActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    private static final String TAG ="Carte" ;
+    private static final String TAG = "Carte";
     private MapView mMapView;
     private MyGPSLocation myGPSLocation;
     private double latitude, longitude;
-
 
 
     @Override
@@ -40,6 +43,7 @@ public class CarteActivity extends AppCompatActivity implements OnMapReadyCallba
         });
         myGPSLocation.start();
     }
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         Log.i(TAG, "onSavedInstanceState");
@@ -71,8 +75,17 @@ public class CarteActivity extends AppCompatActivity implements OnMapReadyCallba
     @Override
     public void onMapReady(GoogleMap map) {
         Log.i(TAG, "onMapReady");
+
+        //verification de la permission et affichage du bouton de localisation de map
+        //todo: code a decommenter si la localisation de GPSLocalisation fonctionne pas
+        //--------------------------------------------------------------------------------------------------------------------------------
+        // if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        // && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        //      map.setMyLocationEnabled(true);
+        // }
+        //---------------------------------------------------------------------------------------------------------------------------------
         map.addMarker(new MarkerOptions().position(new LatLng(this.latitude,this.longitude)).title("Ma position"));
-        LatLng position = new LatLng(this.latitude,this.longitude);
+       LatLng position = new LatLng(this.latitude,this.longitude);
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 10));
     }
 
