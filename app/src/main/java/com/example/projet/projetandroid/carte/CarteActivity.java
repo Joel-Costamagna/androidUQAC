@@ -8,7 +8,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.projet.projetandroid.R;
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -33,7 +32,7 @@ public class CarteActivity extends AppCompatActivity implements OnMapReadyCallba
         mMapView.onCreate(savedInstanceState);
         mMapView.getMapAsync(this);
 
-        //Recuperer les coordonnees de l'utilisateur
+        //Recuperer les coordonnees a partir de GPSLocation
         myGPSLocation = new MyGPSLocation(this, () -> {
             Log.i(TAG, "onCreate coordonnees");
             this.latitude = myGPSLocation.getLatitude();
