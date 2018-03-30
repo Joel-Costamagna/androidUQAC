@@ -1,99 +1,113 @@
 package com.example.projet.projetandroid.carte;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.os.Bundle;
-import android.util.Log;
-
 import com.example.projet.projetandroid.Helpers.MyGPSLocation;
-import com.example.projet.projetandroid.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.example.projet.projetandroid.R;
 
-public class CarteActivity extends Activity implements OnMapReadyCallback {
-    private static final String TAG = "carte";
-    double latitude, longitude;
-    private GoogleMap     mMap;
-    private MapView       mapView;
-    private MyGPSLocation gps;
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
-    {
 
-    }
+public class CarteActivity extends AppCompatActivity implements OnMapReadyCallback {
+
+    private static final String TAG = "Carte";
+    private MapView mMapView;
+    private MyGPSLocation myGPSLocation;
+    private double latitude, longitude;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i(TAG, "onCreate: CarteActivity");
-
+        Log.i(TAG, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_carte);
 
+        mMapView = (MapView) findViewById(R.id.map);
+        mMapView.onCreate(savedInstanceState);
+        mMapView.getMapAsync(this);
 
-        //Map
-        mapView = findViewById(R.id.map);
-        mapView.onCreate(savedInstanceState);
-
-        MapsInitializer.initialize(this);
-        mapView.getMapAsync(this);
-
-
-    }
-
-    @SuppressLint("MissingPermission")
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        Log.i(TAG, "onMapReady: ");
-        mMap = googleMap;
-        LatLng here = new LatLng(this.latitude, this.longitude);
-        mMap.addMarker(new MarkerOptions().position(here).title("je suis ici"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(here));
-        //mMap.moveCamera(CameraUpdateFactory.zoomOut());
-
-        mMap.setMyLocationEnabled(true);
-
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-      /*  gps = new MyGPSLocation(this, () -> {
-            Log.i(TAG, "onStart: mise à jour position");
-            this.latitude = gps.getLatitude();
-            this.longitude = gps.getLongitude();
+        //Recuperer les coordonnees a partir de GPSLocation
+        myGPSLocation = new MyGPSLocation(this, () -> {
+            Log.i(TAG, "onCreate coordonnees");
+            this.latitude = myGPSLocation.getLatitude();
+            this.longitude = myGPSLocation.getLongitude();
         });
-        gps.start();*/
+        myGPSLocation.start();
     }
 
     @Override
-    protected void onPause() {
-        super.onPause(); gps.stop();
+    public void onSaveInstanceState(Bundle outState) {
+        Log.i(TAG, "onSavedInstanceState");
+        super.onSaveInstanceState(outState);
+        mMapView.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onResume() {
-        super.onResume(); gps.start();
+        Log.i(TAG, "onResume");
+        super.onResume();
+        mMapView.onResume();
+    }
+
+    @Override
+    protected void onStart() {
+        Log.i(TAG, "onStart");
+        super.onStart();
+        mMapView.onStart();
     }
 
     @Override
     protected void onStop() {
-        super.onStop(); gps.stop();
+        Log.i(TAG, "onStop");
+        super.onStop();
+        mMapView.onStop();
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy(); gps.stop();
-        mapView.onDestroy();
+    public void onMapReady(GoogleMap map) {
+        Log.i(TAG, "onMapReady");
+
+        //verification de la permission et affichage du bouton de localisation de map
+        //todo: code a decommenter si la localisation de GPSLocalisation fonctionne pas
+        //--------------------------------------------------------------------------------------------------------------------------------
+        // if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        // && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        //      map.setMyLocationEnabled(true);
+        // }
+        //---------------------------------------------------------------------------------------------------------------------------------
+        map.addMarker(new MarkerOptions().position(new LatLng(this.latitude,this.longitude)).title("Ma position"));
+       LatLng position = new LatLng(this.latitude,this.longitude);
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 10));
+    }
+
+    @Override
+    protected void onPause() {
+        Log.i(TAG, "onPause");
+        mMapView.onPause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.i(TAG, "onDestroy");
+        mMapView.onDestroy();
+        super.onDestroy();
     }
 
     @Override
     public void onLowMemory() {
+        Log.i(TAG, "onLowMemory");
         super.onLowMemory();
-        mapView.onLowMemory();
+        mMapView.onLowMemory();
     }
 
 }
