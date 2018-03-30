@@ -25,6 +25,7 @@ public class CarteActivity extends AppCompatActivity implements OnMapReadyCallba
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_carte);
 
@@ -34,7 +35,7 @@ public class CarteActivity extends AppCompatActivity implements OnMapReadyCallba
 
         //Recuperer les coordonnees de l'utilisateur
         myGPSLocation = new MyGPSLocation(this, () -> {
-            Log.i(TAG, "onStart: mise à jour position");
+            Log.i(TAG, "onCreate coordonnees");
             this.latitude = myGPSLocation.getLatitude();
             this.longitude = myGPSLocation.getLongitude();
         });
@@ -42,30 +43,35 @@ public class CarteActivity extends AppCompatActivity implements OnMapReadyCallba
     }
     @Override
     public void onSaveInstanceState(Bundle outState) {
+        Log.i(TAG, "onSavedInstanceState");
         super.onSaveInstanceState(outState);
         mMapView.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onResume() {
+        Log.i(TAG, "onResume");
         super.onResume();
         mMapView.onResume();
     }
 
     @Override
     protected void onStart() {
+        Log.i(TAG, "onStart");
         super.onStart();
         mMapView.onStart();
     }
 
     @Override
     protected void onStop() {
+        Log.i(TAG, "onStop");
         super.onStop();
         mMapView.onStop();
     }
 
     @Override
     public void onMapReady(GoogleMap map) {
+        Log.i(TAG, "onMapReady");
         map.addMarker(new MarkerOptions().position(new LatLng(this.latitude,this.longitude)).title("Ma position"));
         LatLng position = new LatLng(this.latitude,this.longitude);
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 10));
@@ -73,18 +79,21 @@ public class CarteActivity extends AppCompatActivity implements OnMapReadyCallba
 
     @Override
     protected void onPause() {
+        Log.i(TAG, "onPause");
         mMapView.onPause();
         super.onPause();
     }
 
     @Override
     protected void onDestroy() {
+        Log.i(TAG, "onDestroy");
         mMapView.onDestroy();
         super.onDestroy();
     }
 
     @Override
     public void onLowMemory() {
+        Log.i(TAG, "onLowMemory");
         super.onLowMemory();
         mMapView.onLowMemory();
     }
