@@ -2,6 +2,7 @@ package com.example.projet.projetandroid.meteo;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,9 @@ public class MeteoActivity extends Activity {
     private TextView descTextView;
     private final static String API_KEY = "0d580ba5e5cbb7b1c124a5f45a678f82";
     protected void onCreate(Bundle savedInstanceState) {
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            setTheme(R.style.DarkAppTheme);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_meteo);
         myGPSLocation = new MyGPSLocation(this, new Runnable() {
@@ -38,11 +42,10 @@ public class MeteoActivity extends Activity {
         myGPSLocation.stop();
         coord = new Coord(myGPSLocation.getLatitude(),myGPSLocation.getLongitude());
 
-        descTextView = (TextView) findViewById(R.id.desc);
-        nameTextView = (TextView) findViewById(R.id.name);
-        countryTextView = (TextView) findViewById(R.id.country);
-        coordTextView = (TextView) findViewById(R.id.coord);
+        descTextView = findViewById(R.id.desc); nameTextView = findViewById(R.id.name);
+        countryTextView = findViewById(R.id.country); coordTextView = findViewById(R.id.coord);
         RequestQueue queue = Volley.newRequestQueue(this);
+        //TODO i18n lang code
         final String url ="http://api.openweathermap.org/data/2.5/weather?lat="+coord.getLatitude()+"&lon="+coord.getLongitude()+"&lang=fr&appid="+API_KEY;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -56,6 +59,7 @@ public class MeteoActivity extends Activity {
                             Calendar sunrise = Calendar.getInstance();
                             sunset.setTimeInMillis(base.getSys().getSunset() * 1000);
                             sunrise.setTimeInMillis(base.getSys().getSunrise() * 1000);
+                            //TODO i18n
                             descTextView.setText("Meteo : "+ base.getWeather().get(0).getDescription() + "\n"
                                     + "\nHumidité : " + base.getMain().getHumidity() + "%\n"
                                     + "\nPression : " + base.getMain().getPressure() + " hPa\n"

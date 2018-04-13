@@ -65,7 +65,11 @@ public class MyGPSLocation implements LocationListener {
         if (lat_degres < 0) { orientation = "W"; }
         lat_degres = Math.abs(lat_degres);
 
-        return String.format("%s° %s \' %s\" %s", lat_degres, lat_minutes, lat_secondes, orientation);
+        return String.format("%s° %s \' %s\" %s",
+                             lat_degres,
+                             lat_minutes,
+                             lat_secondes,
+                             orientation);
     }
 
     /**
@@ -82,7 +86,11 @@ public class MyGPSLocation implements LocationListener {
         if (lat_degres < 0) { orientation = "S"; }
         lat_degres = Math.abs(lat_degres);
 
-        return String.format("%s° %s \' %s\" %s", lat_degres, lat_minutes, lat_secondes, orientation);
+        return String.format("%s° %s \' %s\" %s",
+                             lat_degres,
+                             lat_minutes,
+                             lat_secondes,
+                             orientation);
     }
 
 
@@ -93,17 +101,12 @@ public class MyGPSLocation implements LocationListener {
      */
     @Override
     public void onLocationChanged(Location location) {
-        Log.i(TAG, "onLocationChanged: " + location);
-        this.longitude = location.getLongitude();
-        this.latitude = location.getLatitude();
-        try {
+        Log.i(TAG, "onLocationChanged: " + location); try {
+            this.longitude = location.getLongitude(); this.latitude = location.getLatitude();
             this.onLocationChangedEvent.run();
         } catch (Exception e) {
             Log.e(TAG, "onLocationChanged: " + e.getLocalizedMessage(), e);
         }
-
-        //altitude.setText(String.format("Alt. : %s", Math.round(location.getAltitude())));
-
     }
 
 

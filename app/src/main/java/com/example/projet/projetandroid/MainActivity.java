@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 
 import com.example.projet.projetandroid.boussole.BoussoleActivity;
@@ -15,6 +16,10 @@ import com.example.projet.projetandroid.meteo.MeteoActivity;
 public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            setTheme(R.style.DarkAppTheme);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
@@ -39,10 +44,10 @@ public class MainActivity extends Activity {
 
     public void onClickButtonCarte(View v) {
         if (ActivityCompat.checkSelfPermission(v.getContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat
-                .checkSelfPermission(
-                        v.getContext(),
-                        Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                                               Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat
+                                                                                                                                         .checkSelfPermission(
+                                                                                                                                                 v.getContext(),
+                                                                                                                                                 Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 2);
         } else {
             Intent intent = new Intent(MainActivity.this, CarteActivity.class);

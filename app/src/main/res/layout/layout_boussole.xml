@@ -11,7 +11,7 @@
         android:layout_height="320dp"
         android:layout_centerInParent="true"
         android:contentDescription="@string/cadran"
-        android:src="@drawable/compass_dial" />
+        android:src="?attr/compass_src" />
 
     <ImageView
         android:id="@+id/main_image_hands"
@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="@string/placeholder"
+        android:textColor="@color/DarkAccent"
         android:textSize="30sp" />
 
     <LinearLayout
@@ -36,16 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/main_image_dial"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
-
-        <!--TODO parser l'altitude-->
-        <!--
-        <TextView
-            android:id="@+id/altitude"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/altitude" />
-        -->
 
         <TextView
             android:id="@+id/longitude"

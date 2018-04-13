@@ -1,11 +1,25 @@
 <resources>
 
+    <declare-styleable name="CTAppTheme">
+        <attr name="compass_src" format="integer" />
+    </declare-styleable>
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/DarkAccent</item>
+        <item name="compass_src">@drawable/compass_dial</item>
+    </style>
+
+    <style name="DarkAppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/DarkPrimary</item>
+        <item name="colorPrimaryDark">@color/DarkBackground</item>
+        <item name="android:background">@color/DarkBackground</item>
+        <item name="android:textColor">@color/DarkPrimary</item>
+        <item name="colorAccent">@color/DarkAccent</item>
+        <item name="compass_src">@drawable/compass_dial_dark</item>
     </style>
 
 </resources>

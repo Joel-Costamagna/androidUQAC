@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -22,6 +23,9 @@ public class BoussoleActivity extends Activity {
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            setTheme(R.style.DarkAppTheme);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_boussole);
 
