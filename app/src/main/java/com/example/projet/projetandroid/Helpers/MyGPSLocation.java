@@ -46,8 +46,8 @@ public class MyGPSLocation implements LocationListener {
         final Criteria criteria = new Criteria();
         criteria.setAltitudeRequired(true);
 
-        assert locationManager != null;
-        mprovider = locationManager.getBestProvider(criteria, false);
+        assert locationManager != null : "location maanger is null";
+        mprovider = locationManager.getBestProvider(criteria, true);
         this.onLocationChangedEvent = onLocationChangedEvent;
     }
 
@@ -117,13 +117,25 @@ public class MyGPSLocation implements LocationListener {
         try {
             Log.i(TAG, "start gps");
             if ((mprovider == null) || mprovider.isEmpty()) {
-                mprovider = LocationManager.GPS_PROVIDER;
+                mprovider = LocationManager.PASSIVE_PROVIDER;
+
             }
             locationManager.requestLocationUpdates(mprovider, 15000, 1, this);
-            final Location location = locationManager.getLastKnownLocation(mprovider);
 
-            assert location != null : "start: location is null";
+            Log.i(TAG, "provider: " + mprovider);
+            Location location = locationManager.getLastKnownLocation(mprovider);
 
+            /*
+            if (location == null) {
+                ListIterator<String> providers = locationManager.getAllProviders().listIterator();
+                do {
+                    mprovider = providers.next();
+
+                } while (locationManager.getLastKnownLocation(mprovider) == null);
+                Log.i(TAG, "provider qui marche: " + mprovider);
+                location = locationManager.getLastKnownLocation(mprovider);
+            }
+            */
             onLocationChanged(location);
 
 
