@@ -174,7 +174,8 @@ class Boussole implements SensorEventListener {
          * cf https://developer.android.com/guide/topics/sensors/sensors_motion.html#sensors-motion-accel
          * Note: You can use many different techniques to filter sensor data.
          * The code sample above uses a simple filter constant (alpha) to create a low-pass filter.
-         * This filter constant is derived from a time constant (t), which is a rough representation of the latency that the filter adds
+         * This filter constant is derived from a time constant (t),
+         * which is a rough representation of the latency that the filter adds
          * to the sensor events,
          * and the sensor's event delivery rate (dt).
          */
