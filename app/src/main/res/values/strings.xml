@@ -32,6 +32,7 @@
     <string name="meteo">meteo</string>
     <string name="altitude">TODO</string>
     <string name="meteo_affichage">Meteo : %s  Humidité : %d  Pression : %d hPa  Température : %d °C  Vitesse de vent : %d m/s  Direction du vent : %d (%d)   Lever soleil : %d:%d:%d  Coucher soleil : %d:%d:%d</string>
+    <string name="switch_theme">changer le thème</string>
 
     <string name="change_city">Change city</string>
 

@@ -30,4 +30,12 @@
         android:onClick="onClickButtonMeteo"
         android:text="@string/menu_button_meteo" />
 
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/meteo"
+        android:text="@string/switch_theme" />
+
 </RelativeLayout>
