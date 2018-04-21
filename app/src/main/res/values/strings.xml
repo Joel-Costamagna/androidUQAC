@@ -9,8 +9,8 @@
     -->
     <string name="menu_button_boussole">Boussole</string>
     <string name="menu_button_carte">Carte</string>
-    <string name="menu_button_meteo">Meteo</string>
-    <string name="titre_page_meteo">Meteo</string>
+    <string name="menu_button_meteo">Météo</string>
+    <string name="titre_page_meteo">Météo</string>
 
 
     <!--
@@ -29,42 +29,24 @@
     <!--
         METEO
     -->
-    <string name="meteo">meteo</string>
-    <string name="altitude">TODO</string>
+    <string name="meteo">Météo</string>
     <string name="meteo_affichage">Meteo : %s  Humidité : %d  Pression : %d hPa  Température : %d °C  Vitesse de vent : %d m/s  Direction du vent : %d (%d)   Lever soleil : %d:%d:%d  Coucher soleil : %d:%d:%d</string>
     <string name="switch_theme">changer le thème</string>
+    <string name="change_city">changer la ville</string>
 
-    <string name="change_city">Change city</string>
+    <string name="open_weather_maps_app_id" translatable="false">11111</string>
 
-    <string name="open_weather_maps_app_id">11111</string>
+    <string name="weather_sunny" translatable="false">&#xf00d;</string>
+    <string name="weather_clear_night" translatable="false">&#xf02e;</string>
 
-    <string name="weather_sunny">&#xf00d;</string>
-    <string name="weather_clear_night">&#xf02e;</string>
+    <string name="weather_foggy" translatable="false">&#xf014;</string>
+    <string name="weather_cloudy" translatable="false">&#xf013;</string>
+    <string name="weather_rainy" translatable="false">&#xf019;</string>
+    <string name="weather_snowy" translatable="false">&#xf01b;</string>
+    <string name="weather_thunder" translatable="false">&#xf01e;</string>
+    <string name="weather_drizzle" translatable="false">&#xf01c;</string>
 
-    <string name="weather_foggy">&#xf014;</string>
-    <string name="weather_cloudy">&#xf013;</string>
-    <string name="weather_rainy">&#xf019;</string>
-    <string name="weather_snowy">&#xf01b;</string>
-    <string name="weather_thunder">&#xf01e;</string>
-    <string name="weather_drizzle">&#xf01c;</string>
-
-    <string name="place_not_found">Sorry, no weather data found.</string>
-
-    <string name="change_city">Change city</string>
-
-    <string name="open_weather_maps_app_id">11111</string>
-
-    <string name="weather_sunny">&#xf00d;</string>
-    <string name="weather_clear_night">&#xf02e;</string>
-
-    <string name="weather_foggy">&#xf014;</string>
-    <string name="weather_cloudy">&#xf013;</string>
-    <string name="weather_rainy">&#xf019;</string>
-    <string name="weather_snowy">&#xf01b;</string>
-    <string name="weather_thunder">&#xf01e;</string>
-    <string name="weather_drizzle">&#xf01c;</string>
-
-    <string name="place_not_found">Sorry, no weather data found.</string>
+    <string name="place_not_found">Désolé, aucune ville trouvée.</string>
 
 
 </resources>

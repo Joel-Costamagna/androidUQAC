@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.view.View;
 import android.widget.Switch;
@@ -19,23 +20,19 @@ public class MainActivity extends Activity {
     private static final String PREFS_NAME      = "prefs";
     private static final String PREF_DARK_THEME = "dark_theme";
     private static final String TAG             = "mainActivity";
-    boolean useDarkTheme;
+    boolean useDarkTheme = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        setContentView(R.layout.activity_main);
         SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         useDarkTheme = preferences.getBoolean(PREF_DARK_THEME, false); if (useDarkTheme) {
-            Log.i(TAG, "onCreate: applying dark theme"); setTheme(R.style.DarkAppTheme);
-            Log.i(TAG, "onCreate: theme applied");
-        }
-        /*AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
-            setTheme(R.style.DarkAppTheme);
-        }
-        */
-        Switch toggle = findViewById(R.id.switch1);
+            Log.i(TAG, "onCreate: applying dark theme");
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES); setTheme(R.style.DarkAppTheme);
+        } else {
+            Log.i(TAG, "onCreate: applying light theme");
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); setTheme(R.style.AppTheme);
+        } setContentView(R.layout.activity_main);
+        Switch toggle = findViewById(R.id.switch1); toggle.setChecked(useDarkTheme);
         toggle.setOnCheckedChangeListener((view, isChecked) -> toggleTheme(isChecked));
 
         super.onCreate(savedInstanceState);
