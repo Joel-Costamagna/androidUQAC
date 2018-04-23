@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ProjetAndroid</string>
+    <string name="placeholder">please activate location</string>
+    <string name="aiguille">hands</string>
+    <string name="menu_button_boussole">Compass</string>
+    <string name="titre_page_boussole">Compass</string>
+    <string name="cadran">dial</string>
+    <string name="carte">Map</string>
+    <string name="menu_button_carte">Map</string>
+    <string name="titre_page_carte">Map</string>
+    <string name="change_city">change city</string>
+    <string name="switch_theme">switch theme</string>
+    <string name="place_not_found" translatable="false">Sorry, no city found</string>
+    <string name="menu_button_meteo">weather</string>
+    <string name="titre_page_meteo">weather</string>
+    <string name="meteo">weather</string>
+    <string name="meteo_affichage">Meteo : %s  Humidité : %d  Pression : %d hPa  Température : %d °C  Vitesse de vent : %d m/s  Direction du vent : %d (%d)   Lever soleil : %d:%d:%d  Coucher soleil : %d:%d:%d</string>
+    <string name="mario">mario</string>
+</resources>

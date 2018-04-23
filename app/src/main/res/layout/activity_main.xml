@@ -5,29 +5,59 @@
     android:layout_height="match_parent"
     tools:context="com.example.projet.projetandroid.MainActivity">
 
-    <Button
-        android:id="@+id/boussole"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClickButtonBoussole"
-        android:text="@string/menu_button_boussole" />
+    <RelativeLayout
+        android:id="@+id/boutons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/carte"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/boussole"
-        android:onClick="onClickButtonCarte"
-        android:text="@string/menu_button_carte" />
+        <Button
+            android:id="@+id/boussole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickButtonBoussole"
+            android:text="@string/menu_button_boussole" />
 
-    <Button
-        android:id="@+id/meteo"
-        android:layout_width="match_parent"
+        <Button
+            android:id="@+id/carte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/boussole"
+            android:onClick="onClickButtonCarte"
+            android:text="@string/menu_button_carte" />
+
+        <Button
+            android:id="@+id/meteo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/carte"
+            android:onClick="onClickButtonMeteo"
+            android:text="@string/menu_button_meteo" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/meteo"
+            android:text="@string/switch_theme" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/carte"
-        android:onClick="onClickButtonMeteo"
-        android:text="@string/menu_button_meteo" />
+        android:layout_below="@+id/boutons">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="0dp"
+            android:contentDescription="@string/mario"
+            android:src="@drawable/mario" />
+    </RelativeLayout>
 
 </RelativeLayout>
