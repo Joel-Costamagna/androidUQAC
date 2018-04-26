@@ -18,6 +18,9 @@
         <item name="colorPrimaryDark">@color/DarkBackground</item>
         <item name="android:background">@color/DarkBackground</item>
         <item name="android:textColor">@color/DarkPrimary</item>
+        <item name="android:negativeButtonText">#FFFFFF</item>
+        <item name="android:positiveButtonText">#FFFFFF</item>
+        <item name="android:searchButtonText">#FFFFFF</item>
         <item name="colorAccent">@color/DarkAccent</item>
         <item name="compass_src">@drawable/compass_dial_dark</item>
     </style>

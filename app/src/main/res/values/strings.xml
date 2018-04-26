@@ -48,6 +48,8 @@
 
     <string name="place_not_found">Désolé, aucune ville trouvée.</string>
     <string name="mario">mario</string>
+    <string name="chercher_une_ville">Chercher une ville</string>
+    <string name="valider">Valider</string>
 
 
 </resources>
