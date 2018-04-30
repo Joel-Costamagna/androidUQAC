@@ -12,36 +12,49 @@
 
         <Button
             android:id="@+id/boussole"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onClickButtonBoussole"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:background="@android:drawable/btn_default_small"
             android:text="@string/menu_button_boussole" />
 
         <Button
             android:id="@+id/carte"
+            android:layout_marginTop="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/boussole"
             android:onClick="onClickButtonCarte"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:background="@android:drawable/btn_default_small"
             android:text="@string/menu_button_carte" />
 
         <Button
             android:id="@+id/meteo"
+            android:layout_marginTop="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/carte"
             android:onClick="onClickButtonMeteo"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:background="@android:drawable/btn_default_small"
             android:text="@string/menu_button_meteo" />
 
         <Switch
             android:id="@+id/switch1"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/meteo"
-            android:text="@string/switch_theme" />
+            android:text="@string/switch_theme"
+            />
     </RelativeLayout>
 
     <RelativeLayout
@@ -50,14 +63,13 @@
         android:layout_below="@+id/boutons">
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="0dp"
-            android:contentDescription="@string/mario"
-            android:src="@drawable/mario" />
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@string/mario"
+                android:src="@drawable/mario"/>
     </RelativeLayout>
 
 </RelativeLayout>

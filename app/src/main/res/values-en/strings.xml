@@ -11,10 +11,16 @@
     <string name="titre_page_carte">Map</string>
     <string name="change_city">change city</string>
     <string name="switch_theme">switch theme</string>
-    <string name="place_not_found" translatable="false">Sorry, no city found</string>
+    <string name="place_not_found">Sorry, no city found</string>
     <string name="menu_button_meteo">weather</string>
     <string name="titre_page_meteo">weather</string>
     <string name="meteo">weather</string>
-    <string name="meteo_affichage">Meteo : %s  Humidité : %d  Pression : %d hPa  Température : %d °C  Vitesse de vent : %d m/s  Direction du vent : %d (%d)   Lever soleil : %d:%d:%d  Coucher soleil : %d:%d:%d</string>
     <string name="mario">mario</string>
+    <string name="chercher_une_ville">Search a city</string>
+    <string name="valider">validate</string>
+    <string name="direction">Wind direction</string>
+    <string name="humidite">Humidity</string>
+    <string name="pression">Pressure</string>
+    <string name="vitesse">Wind speed</string>
+    <string name="langAPI">lang=en</string>
 </resources>

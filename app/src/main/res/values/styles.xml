@@ -11,6 +11,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/DarkAccent</item>
         <item name="compass_src">@drawable/compass_dial</item>
+        <item name="android:editTextBackground">@android:color/transparent</item>
     </style>
 
     <style name="DarkAppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
@@ -23,6 +24,7 @@
         <item name="android:searchButtonText">#FFFFFF</item>
         <item name="colorAccent">@color/DarkAccent</item>
         <item name="compass_src">@drawable/compass_dial_dark</item>
+        <item name="android:editTextBackground">@android:color/white</item>
     </style>
 
 </resources>

@@ -30,10 +30,12 @@
         METEO
     -->
     <string name="meteo">Météo</string>
-    <string name="meteo_affichage">Meteo : %s  Humidité : %d  Pression : %d hPa  Température : %d °C  Vitesse de vent : %d m/s  Direction du vent : %d (%d)   Lever soleil : %d:%d:%d  Coucher soleil : %d:%d:%d</string>
     <string name="switch_theme">changer le thème</string>
     <string name="change_city">changer la ville</string>
-
+    <string name="humidite">Humidité</string>
+    <string name="pression">Pression</string>
+    <string name="vitesse">Vitesse du vent</string>
+    <string name="direction">Direction du vent</string>
     <string name="open_weather_maps_app_id" translatable="false">11111</string>
 
     <string name="weather_sunny" translatable="false">&#xf00d;</string>
@@ -50,6 +52,7 @@
     <string name="mario">mario</string>
     <string name="chercher_une_ville">Chercher une ville</string>
     <string name="valider">Valider</string>
+    <string name="langAPI">lang=fr</string>
 
 
 </resources>

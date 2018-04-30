@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF0099CC">
+                tools:context=".meteo.MeteoActivity">
 
     <LinearLayout
         android:id="@+id/linear1"
@@ -18,8 +19,7 @@
             android:layout_weight="70"
             android:hint="@string/chercher_une_ville"
             android:inputType="textCapWords"
-            android:singleLine="false"
-            android:textColor="#FFFFFF" />
+            android:singleLine="false"/>
 
         <Button
             android:layout_width="0dp"
@@ -27,16 +27,12 @@
             android:layout_weight="30"
             android:onClick="onClickButtonRechercheVille"
             android:padding="0dp"
-            android:text="@string/valider" />
+            android:text="@string/valider"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@android:color/holo_blue_dark"
+            android:textColor="@android:color/white"/>
 
     </LinearLayout>
-
-
-    <!-- Pour plus tard, si jamais -->
-    <!-- <ProgressBar
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:visibility="invisible"/>  -->
 
     <View
         android:id="@+id/view1"
@@ -54,7 +50,6 @@
         android:layout_marginTop="10dp"
         android:text="City_text"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/white"
         android:textSize="30sp" />
 
     <TextView
@@ -66,7 +61,6 @@
         android:layout_marginTop="20dp"
         android:text="Icon"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@android:color/white"
         android:textSize="55sp" />
 
     <TextView
@@ -79,7 +73,6 @@
         android:layout_marginTop="30dp"
         android:text="°C"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@android:color/white"
         android:textSize="40sp" />
 
 
@@ -91,7 +84,6 @@
         android:layout_marginTop="20dp"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/white"
         android:textSize="28sp"
         android:textStyle="bold" />
 
@@ -101,8 +93,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/descMeteo"
         android:textAlignment="center"
-        android:textColor="@android:color/white"
         android:textStyle="bold" />
+
+    <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="100dp"
+            android:minWidth="100dp"
+            android:layout_below="@+id/desc"
+            android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>

@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +27,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
-import java.util.Date;
+import com.example.projet.projetandroid.R;
 
 public class MeteoActivity extends Activity {
     private Coord coord;
@@ -37,6 +38,7 @@ public class MeteoActivity extends Activity {
     private TextView descTextView;
     private TextView descMeteoTextView;
     private Typeface weatherFont;
+    private ProgressBar progressBar;
     private final static String API_KEY = "0d580ba5e5cbb7b1c124a5f45a678f82";
     protected void onCreate(Bundle savedInstanceState) {
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
@@ -54,19 +56,21 @@ public class MeteoActivity extends Activity {
         myGPSLocation.start();
         myGPSLocation.stop();
         coord = new Coord(myGPSLocation.getLatitude(),myGPSLocation.getLongitude());
-
+        progressBar = findViewById(R.id.progressBar);
         descTextView = findViewById(R.id.desc); weatherIconTextView = findViewById(R.id.weather_icon);
         cityTextView = findViewById(R.id.city); temperatureTextView = findViewById(R.id.current_temperature);
         descMeteoTextView = findViewById(R.id.descMeteo);
         RequestQueue queue = Volley.newRequestQueue(this);
         //TODO i18n lang code
-        final String url ="http://api.openweathermap.org/data/2.5/weather?lat="+coord.getLatitude()+"&lon="+coord.getLongitude()+"&lang=fr&appid="+API_KEY;
+        final String url ="http://api.openweathermap.org/data/2.5/weather?lat="+coord.getLatitude()+"&lon="+coord.getLongitude()+"&"+getString(R.string.langAPI)+"&appid="+API_KEY;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         try{
+                            //Display the progressBar
+                            progressBar.setVisibility(View.VISIBLE);
                             Gson gson = new Gson();
                             Base base = gson.fromJson(response,Base.class);
                             Calendar sunset = Calendar.getInstance();
@@ -76,12 +80,10 @@ public class MeteoActivity extends Activity {
                             //TODO i18n
                             descMeteoTextView.setText(""+ base.getWeather().get(0).getDescription() + "");
                             descTextView.setText(
-                                     "\nHumidité : " + base.getMain().getHumidity() + "% , "
-                                    + "Pression : " + base.getMain().getPressure() + " hPa\n"
-                                    + "\nVitesse de vent : " + base.getWind().getSpeed() + " m/s , "
-                                    + "Direction du vent : " + base.getWind().getDeg() + " \n");
-                                   // + "\nLever soleil : " + sunrise.get(Calendar.HOUR_OF_DAY) + ":" + sunrise.get(Calendar.MINUTE)  + ":" + sunrise.get(Calendar.SECOND) + "\n"
-                                   // + "\nCoucher soleil : " + sunset.get(Calendar.HOUR_OF_DAY) + ":" + sunset.get(Calendar.MINUTE)  + ":" + sunset.get(Calendar.SECOND)  + "\n");
+                                     "\n"+getString(R.string.humidite)+" : " + base.getMain().getHumidity() + "% , "
+                                    + getString(R.string.pression)+" : " + base.getMain().getPressure() + " hPa\n"
+                                    + "\n" +getString(R.string.vitesse)+" : " + base.getWind().getSpeed() + " m/s , "
+                                    + getString(R.string.direction)+" : " + base.getWind().getDeg() + " \n");
                             temperatureTextView.setText( "" + (Math.round(base.getMain().getTemp() - 273.15)) + " °C\n");
                             cityTextView.setText(""+base.getName());
 
@@ -115,7 +117,8 @@ public class MeteoActivity extends Activity {
                             weatherIconTextView.setText(icon);
                             weatherIconTextView.setTypeface(weatherFont);
 
-
+                            //Dismiss the progress bar
+                            progressBar.setVisibility(View.GONE);
                         }catch (Exception error){cityTextView.setText(response + "\n" + error.getMessage());}
                     }
                 }, new Response.ErrorListener() {
@@ -142,13 +145,15 @@ public class MeteoActivity extends Activity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        final String url ="http://api.openweathermap.org/data/2.5/weather?q="+text+"&lang=fr&appid="+API_KEY;
+        final String url ="http://api.openweathermap.org/data/2.5/weather?q="+text+"&"+getString(R.string.langAPI)+"&appid="+API_KEY;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         try{
+                            //Display the progressBar
+                            progressBar.setVisibility(View.VISIBLE);
                             Gson gson = new Gson();
                             Base base = gson.fromJson(response,Base.class);
                             Calendar sunset = Calendar.getInstance();
@@ -158,12 +163,10 @@ public class MeteoActivity extends Activity {
                             //TODO i18n
                             descMeteoTextView.setText(""+ base.getWeather().get(0).getDescription() + "");
                             descTextView.setText(
-                                    "\nHumidité : " + base.getMain().getHumidity() + "% , "
-                                            + "Pression : " + base.getMain().getPressure() + " hPa\n"
-                                            + "\nVitesse de vent : " + base.getWind().getSpeed() + " m/s , "
-                                            + "Direction du vent : " + base.getWind().getDeg() + " \n");
-                            // + "\nLever soleil : " + sunrise.get(Calendar.HOUR_OF_DAY) + ":" + sunrise.get(Calendar.MINUTE)  + ":" + sunrise.get(Calendar.SECOND) + "\n"
-                            // + "\nCoucher soleil : " + sunset.get(Calendar.HOUR_OF_DAY) + ":" + sunset.get(Calendar.MINUTE)  + ":" + sunset.get(Calendar.SECOND)  + "\n");
+                                    "\n"+getString(R.string.humidite)+" : " + base.getMain().getHumidity() + "% , "
+                                            + getString(R.string.pression)+" : " + base.getMain().getPressure() + " hPa\n"
+                                            + "\n" +getString(R.string.vitesse)+" : " + base.getWind().getSpeed() + " m/s , "
+                                            + getString(R.string.direction)+" : " + base.getWind().getDeg() + " \n");
                             temperatureTextView.setText( "" + (Math.round(base.getMain().getTemp() - 273.15)) + " °C\n");
                             cityTextView.setText(""+base.getName());
 
@@ -197,6 +200,8 @@ public class MeteoActivity extends Activity {
                             weatherIconTextView.setText(icon);
                             weatherIconTextView.setTypeface(weatherFont);
 
+                            //Dismiss the progress bar
+                            progressBar.setVisibility(View.GONE);
 
                         }catch (Exception error){cityTextView.setText(response + "\n" + error.getMessage());}
                     }
